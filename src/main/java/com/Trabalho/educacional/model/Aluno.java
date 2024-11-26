@@ -1,4 +1,4 @@
-package com.Trabalho.educacional.entity;
+package com.Trabalho.educacional.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

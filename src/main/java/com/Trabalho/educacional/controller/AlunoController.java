@@ -1,6 +1,6 @@
 package com.Trabalho.educacional.controller;
 
-import com.Trabalho.educacional.entity.Aluno;
+import com.Trabalho.educacional.model.Aluno;
 import com.Trabalho.educacional.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package com.Trabalho.educacional.repository;
 
-import com.Trabalho.educacional.entity.Aluno;
+import com.Trabalho.educacional.model.Aluno;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

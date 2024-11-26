@@ -1,6 +1,6 @@
 package com.Trabalho.educacional.controller;
 
-import com.Trabalho.educacional.entity.Curso;
+import com.Trabalho.educacional.model.Curso;
 import com.Trabalho.educacional.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
