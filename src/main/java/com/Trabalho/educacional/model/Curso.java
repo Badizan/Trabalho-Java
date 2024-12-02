@@ -1,6 +1,7 @@
 package com.Trabalho.educacional.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Curso {
@@ -9,16 +10,19 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "O nome é obrigatório.")
+    @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres.")
     private String nome;
 
-    @Column(nullable = false, length = 20, unique = true)
+    @NotBlank(message = "O código é obrigatório.")
+    @Size(max = 20, message = "O código deve ter no máximo 20 caracteres.")
     private String codigo;
 
-    @Column(nullable = false)
+    @NotNull(message = "A carga horária é obrigatória.")
     private Integer cargaHoraria;
 
     // Getters e Setters
+
     public Integer getId() {
         return id;
     }
@@ -49,16 +53,5 @@ public class Curso {
 
     public void setCargaHoraria(Integer cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
-    }
-
-    // toString
-    @Override
-    public String toString() {
-        return "Curso{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", codigo='" + codigo + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
-                '}';
     }
 }

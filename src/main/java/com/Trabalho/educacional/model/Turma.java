@@ -1,6 +1,7 @@
 package com.Trabalho.educacional.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Turma {
@@ -9,17 +10,18 @@ public class Turma {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @NotNull(message = "O ano é obrigatório.")
     private Integer ano;
 
-    @Column(nullable = false)
+    @NotNull(message = "O semestre é obrigatório.")
     private Integer semestre;
 
     @ManyToOne
-    @JoinColumn(name = "curso_id", nullable = false)
+    @JoinColumn(name = "curso_id")
     private Curso curso;
 
     // Getters e Setters
+
     public Integer getId() {
         return id;
     }
@@ -50,16 +52,5 @@ public class Turma {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
-    }
-
-    // toString
-    @Override
-    public String toString() {
-        return "Turma{" +
-                "id=" + id +
-                ", ano=" + ano +
-                ", semestre=" + semestre +
-                ", curso=" + curso +
-                '}';
     }
 }

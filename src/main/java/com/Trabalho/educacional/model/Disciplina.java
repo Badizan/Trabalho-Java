@@ -1,6 +1,7 @@
 package com.Trabalho.educacional.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Disciplina {
@@ -9,21 +10,24 @@ public class Disciplina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "O nome é obrigatório.")
+    @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres.")
     private String nome;
 
-    @Column(nullable = false, length = 20, unique = true)
+    @NotBlank(message = "O código é obrigatório.")
+    @Size(max = 20, message = "O código deve ter no máximo 20 caracteres.")
     private String codigo;
 
     @ManyToOne
-    @JoinColumn(name = "curso_id", nullable = false)
+    @JoinColumn(name = "curso_id")
     private Curso curso;
 
     @ManyToOne
-    @JoinColumn(name = "professor_id", nullable = false)
+    @JoinColumn(name = "professor_id")
     private Professor professor;
 
     // Getters e Setters
+
     public Integer getId() {
         return id;
     }

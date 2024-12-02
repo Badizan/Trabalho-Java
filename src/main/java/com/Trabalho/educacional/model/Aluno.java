@@ -1,34 +1,38 @@
 package com.Trabalho.educacional.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "alunos")
 public class Aluno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "O nome é obrigatório.")
+    @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres.")
     private String nome;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @NotBlank(message = "O email é obrigatório.")
+    @Email(message = "O email deve ser válido.")
     private String email;
 
-    @Column(nullable = false, length = 20, unique = true)
+    @NotBlank(message = "A matrícula é obrigatória.")
+    @Size(max = 20, message = "A matrícula deve ter no máximo 20 caracteres.")
     private String matricula;
 
-    @Column(name = "data_nascimento", nullable = false)
+    @NotNull(message = "A data de nascimento é obrigatória.")
     private LocalDate dataNascimento;
 
     // Getters e Setters
-    public Long getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

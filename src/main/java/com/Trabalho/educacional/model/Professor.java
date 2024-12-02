@@ -1,6 +1,7 @@
 package com.Trabalho.educacional.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Professor {
@@ -9,19 +10,22 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100)
+    @NotBlank(message = "O nome é obrigatório.")
+    @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres.")
     private String nome;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @NotBlank(message = "O email é obrigatório.")
+    @Email(message = "O email deve ser válido.")
     private String email;
 
-    @Column(length = 15)
+    @Size(max = 15, message = "O telefone deve ter no máximo 15 caracteres.")
     private String telefone;
 
-    @Column(length = 100)
+    @Size(max = 100, message = "A especialidade deve ter no máximo 100 caracteres.")
     private String especialidade;
 
     // Getters e Setters
+
     public Integer getId() {
         return id;
     }
@@ -60,17 +64,5 @@ public class Professor {
 
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
-    }
-
-    // toString
-    @Override
-    public String toString() {
-        return "Professor{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", especialidade='" + especialidade + '\'' +
-                '}';
     }
 }

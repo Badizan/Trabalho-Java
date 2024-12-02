@@ -1,7 +1,7 @@
 package com.Trabalho.educacional.model;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -12,20 +12,21 @@ public class Nota {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "matricula_id", nullable = false)
+    @JoinColumn(name = "matricula_id")
     private Matricula matricula;
 
     @ManyToOne
-    @JoinColumn(name = "disciplina_id", nullable = false)
+    @JoinColumn(name = "disciplina_id")
     private Disciplina disciplina;
 
-    @Column(nullable = false, precision = 5, scale = 2)
-    private BigDecimal nota;
+    @NotNull(message = "A nota é obrigatória.")
+    private Double nota;
 
-    @Column(nullable = false)
+    @NotNull(message = "A data de lançamento é obrigatória.")
     private LocalDate dataLancamento;
 
     // Getters e Setters
+
     public Integer getId() {
         return id;
     }
@@ -50,11 +51,11 @@ public class Nota {
         this.disciplina = disciplina;
     }
 
-    public BigDecimal getNota() {
+    public Double getNota() {
         return nota;
     }
 
-    public void setNota(BigDecimal nota) {
+    public void setNota(Double nota) {
         this.nota = nota;
     }
 
